@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+    .intro {
+        margin-top: -100px;
+    }
+    .container.editor {
+        width: 500px;
+        float: left;
+    }
+    </style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <script type='text/javascript' src='http://www.x3dom.org/download/x3dom.js'> </script> 
+    <script   src="https://code.jquery.com/jquery-2.2.1.min.js"   integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="   crossorigin="anonymous"></script>
+    <script type='text/javascript' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'> </script> 
+    <link rel='stylesheet' type='text/css' href='http://www.x3dom.org/download/x3dom.css'></link> 
+
+    <title>X3D Editor</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/scrolling-nav.css" rel="stylesheet">
+
+    <!-- Text Editor imports -->
+    <script src="js/tinymce.min.js"></script>
+    <script src="js/plugins/vrml/plugin.js"></script>
+    <script>tinymce.init({ selector:'textarea',
+    plugins: 'vrml',
+    toolbar: 'vrml Shape',
+    force_br_newlines: true,
+    force_p_newlines: true,
+    remove_linebreaks : false, 
+    forced_root_block: ''});
+    </script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+
+    <!-- Intro Section -->
+   
+    <section id="intro" class="intro-section">
+        <div class="container editor">
+            <div class="row">
+                <div class="col-md-12">
+                    <form method="POST">
+                      <textarea></textarea>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <hr>
+
+    <div class="x3dSpace">
+    <x3d class="wrlModel" id="unbao" width='300px' height='200px'> 
+       <scene>
+         <ProtoDeclare name="New">
+    <ProtoInterface>
+      <field  name="rad" type="SFFloat" value="1.0" accessType="initializeOnly"/>
+    </ProtoInterface>
+    <ProtoBody>
+          <Shape >
+              <Appearance >
+                  <Material  diffuseColor="1.0 0.0 0.0"/>
+              </Appearance>
+              <Sphere >
+                  <IS>
+                    <connect nodeField="radius" protoField="rad"/>
+                  </IS>
+              </Sphere>
+          </Shape>
+    </ProtoBody>
+  </ProtoDeclare>
+  <ProtoDeclare name="NewShape">
+    <ProtoInterface>
+      <field  name="newRadius" type="SFFloat" value="2.0" accessType="initializeOnly"/>
+      <field  name="InitialAppearance" type="SFNode" accessType="initializeOnly">
+      <Appearance >
+          <Material  diffuseColor="0.0 1.0 0.0"/>
+      </Appearance>
+      </field>
+      <field  name="newHeight" type="SFFloat" value="1.0" accessType="initializeOnly"/>
+    </ProtoInterface>
+    <ProtoBody>
+          <Group >
+              <ProtoInstance name="New" DEF="NEW">
+                <fieldValue name="rad" value="1.0"/>
+                <IS>
+                  <connect nodeField="rad" protoField="newRadius"/>
+                </IS>
+              </ProtoInstance>
+              <Transform  translation="2.0 0.0 0.0">
+                  <Shape  DEF="ConstainedShape" >
+                      <IS>
+                        <connect nodeField="appearance" protoField="InitialAppearance"/>
+                      </IS>
+                      <Cylinder  DEF="ConstainedCylinder" >
+                          <IS>
+                            <connect nodeField="radius" protoField="newRadius"/>
+                            <connect nodeField="height" protoField="newHeight"/>
+                          </IS>
+                      </Cylinder>
+                  </Shape>
+              </Transform>
+              <Transform  translation="-2.0 0.0 0.0">
+                  <Shape  DEF="ConstainedShape1" >
+                      <IS>
+                        <connect nodeField="appearance" protoField="InitialAppearance"/>
+                      </IS>
+                      <Cylinder  DEF="ConstainedCylinder1" >
+                          <IS>
+                            <connect nodeField="radius" protoField="newRadius"/>
+                            <connect nodeField="height" protoField="newHeight"/>
+                          </IS>
+                      </Cylinder>
+                  </Shape>
+              </Transform>
+          </Group>
+    </ProtoBody>
+  </ProtoDeclare>
+  <ProtoInstance name="NewShape" DEF="A">
+    <fieldValue name="newRadius" value="1.0"/>
+    <fieldValue name="InitialAppearance">
+      <Appearance >
+          <Material  diffuseColor="1.0 0.0 0.0"/>
+      </Appearance>
+    </fieldValue>
+    <fieldValue name="newHeight" value="2.0"/>
+  </ProtoInstance>
+  <ProtoDeclare name="New">
+    <ProtoInterface>
+      <field  name="rad" type="SFFloat" value="1.0" accessType="initializeOnly"/>
+    </ProtoInterface>
+    <ProtoBody>
+          <Shape >
+              <Appearance >
+                  <Material  diffuseColor="1.0 0.0 0.0"/>
+              </Appearance>
+              <Sphere >
+                  <IS>
+                    <connect nodeField="radius" protoField="rad"/>
+                  </IS>
+              </Sphere>
+          </Shape>
+    </ProtoBody>
+  </ProtoDeclare>
+  <ProtoDeclare name="NewShape">
+    <ProtoInterface>
+      <field  name="newRadius" type="SFFloat" value="2.0" accessType="initializeOnly"/>
+      <field  name="InitialAppearance" type="SFNode" accessType="initializeOnly">
+      <Appearance >
+          <Material  diffuseColor="0.0 1.0 0.0"/>
+      </Appearance>
+      </field>
+      <field  name="newHeight" type="SFFloat" value="1.0" accessType="initializeOnly"/>
+    </ProtoInterface>
+    <ProtoBody>
+          <Group >
+              <ProtoInstance name="New" DEF="NEW">
+                <fieldValue name="rad" value="1.0"/>
+                <IS>
+                  <connect nodeField="rad" protoField="newRadius"/>
+                </IS>
+              </ProtoInstance>
+              <Transform  translation="2.0 0.0 0.0">
+                  <Shape  DEF="ConstainedShape" >
+                      <IS>
+                        <connect nodeField="appearance" protoField="InitialAppearance"/>
+                      </IS>
+                      <Cylinder  DEF="ConstainedCylinder" >
+                          <IS>
+                            <connect nodeField="radius" protoField="newRadius"/>
+                            <connect nodeField="height" protoField="newHeight"/>
+                          </IS>
+                      </Cylinder>
+                  </Shape>
+              </Transform>
+              <Transform  translation="-2.0 0.0 0.0">
+                  <Shape  DEF="ConstainedShape1" >
+                      <IS>
+                        <connect nodeField="appearance" protoField="InitialAppearance"/>
+                      </IS>
+                      <Cylinder  DEF="ConstainedCylinder1" >
+                          <IS>
+                            <connect nodeField="radius" protoField="newRadius"/>
+                            <connect nodeField="height" protoField="newHeight"/>
+                          </IS>
+                      </Cylinder>
+                  </Shape>
+              </Transform>
+          </Group>
+    </ProtoBody>
+  </ProtoDeclare>
+  <ProtoInstance name="NewShape" DEF="A">
+    <fieldValue name="newRadius" value="1.0"/>
+    <fieldValue name="InitialAppearance">
+      <Appearance >
+          <Material  diffuseColor="1.0 0.0 0.0"/>
+      </Appearance>
+    </fieldValue>
+    <fieldValue name="newHeight" value="2.0"/>
+  </ProtoInstance>
+        </scene>
+    </x3d>
+    </div>
+
+</section>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Scrolling Nav JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/scrolling-nav.js"></script>
+    <script src="functions/ola.js"></script>
+
+</body>
+
+</html>
