@@ -22,7 +22,7 @@ function sendAjaxData(content, callback) {
 	submission['value'] = content;
 	//console.log(submission);
     var submit = $.ajax({
-            url: 'http://192.168.1.107:3333/', 
+            url: 'http://172.30.97.164:3333/', 
             type: 'POST', 
             data: submission,
             error: function(error) {

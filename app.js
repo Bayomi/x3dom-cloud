@@ -5,8 +5,7 @@ var express = require("express"),
     port1 = 3333,
     port2 = 1337,
     qs = require('querystring'),
-    bs = require( "body-parser"),
-    Firebase = require("firebase");
+    bs = require( "body-parser");
 
 var fs = require('fs');
 var exec = require('child_process').exec, child;
@@ -36,7 +35,7 @@ var allowCrossDomain = function(req, res, next) {
         //res.send("oi");
         var data = req.body;
         var vrmlProgram = data['value'];
-        writeFile(vrmlProgram, res);
+        getStdin(vrmlProgram, res);
         //getStdin(res);
        /*var data = req.body;
         var vrmlProgram = data['value'];
@@ -47,16 +46,56 @@ var allowCrossDomain = function(req, res, next) {
         });*/
     });
 
-    function writeFile(content, res) {
+    var write_user_input_to_file = function(content_string){
+        var unique_filename = get_random_filename();
+        var user_file = "bin/" + unique_filename + ".wlr";
+        fs.appendFile(user_file, content_string, function(err) {
+            if(err) {
+                return console.log(err);
+            }
+        });
+        return user_file;
+    }
+
+    var get_random_filename = function(filename){
+        var filename = "";
+        var possible_characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        for( var i=0; i < 5; i++ )
+            filename += possible_characters.charAt(Math.floor(Math.random() * possible_characters.length));
+        return filename;
+    }
+
+    var getStdin = function(message, callback){
+        var user_unique_file = write_user_input_to_file(message);  
+        if (user_unique_file != null){
+             var user_input = "java -jar bin/testX3D.jar " + user_unique_file + " bin/newfile.x3d";
+        }
+        else{
+            console.log("file é null viu");
+        }
+        child = exec(user_input,
+            function(error, stdout, stderr){
+                console.log('stdout: ' + stdout);
+                console.log('stderr: ' + stderr);
+                callback.send(stdout);
+                if (error != null){
+                    console.log('exec error' + error);
+                }
+                console.log(stdout);
+        });
+    };
+
+    /*function writeFile(content, res) {
         fs.writeFile("test2.wrl", content, function(err) {
             if(err) {
                 return console.log(err);
             }
+            fs.close();
             getStdin(res);
         }); 
-    };
+    };*/
 
-    function getStdin(callback) {
+    /*function getStdin(callback) {
         child = exec('java -jar binX3D.jar test2.wrl newshape.x3d',
           function (error, stdout, stderr){
             console.log(stdout);
@@ -66,7 +105,7 @@ var allowCrossDomain = function(req, res, next) {
               console.log('exec error: ' + error);
             }
         });     
-    }
+    }*/
 
 
     console.log('Request received');
