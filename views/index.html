@@ -3,10 +3,10 @@
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <script type='text/javascript' src='http://www.x3dom.org/download/x3dom.js'> </script> 
+    <script type='text/javascript' src='../x3dom-files/x3dom.js'> </script> 
     <script   src="https://code.jquery.com/jquery-2.2.1.min.js"   integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="   crossorigin="anonymous"></script>
     <script type='text/javascript' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'> </script> 
-    <link rel='stylesheet' type='text/css' href='http://www.x3dom.org/download/x3dom.css'></link> 
+    <link rel='stylesheet' type='text/css' href='../x3dom-files/x3dom.css'></link> 
 
     <title>Simple icons</title>
     <style>
@@ -59,7 +59,7 @@
 
   function sendAjaxData(content) {
     var submit = $.ajax({
-            url: 'http://172.30.79.127:3333/', 
+            url: 'http://localhost:3333/', 
             type: 'POST', 
             data: content,
             error: function(error) {
