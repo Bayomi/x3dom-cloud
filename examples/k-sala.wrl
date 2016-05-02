@@ -1,0 +1,647 @@
+#VRML V2.0 utf8
+#Floor
+Transform{
+       translation 0 -0.05 0
+       children[
+              Shape{
+                     appearance Appearance{
+                            material Material{
+                                   shininess 0.2
+                            }       
+                            texture ImageTexture{
+                                   url "floor.jpg"
+                            }
+                            textureTransform TextureTransform{
+                                   scale 2.5 2.5
+                            }
+                     }
+                     geometry Box{
+                            size 5.33 0.1 10
+                     }
+              }
+       ]
+}
+#WallW
+Transform{
+       translation -2.715 1.4 0
+       children[
+              Shape{
+                     appearance DEF Brick Appearance{
+                            texture ImageTexture{
+                                   url "Brick.jpg"
+                            }
+                            textureTransform TextureTransform {
+                                          translation 0 0
+                                          rotation 0
+                                          scale 3.2 3.2
+                                          center 0 0 
+
+                            }
+                     }
+                     geometry Box{
+                            size 0.10 2.8 8.25
+                     }
+              }
+       ]
+}
+#WallE
+Transform{
+       translation 2.68 1.4 0
+       children[
+              Shape{
+                      appearance Appearance{
+                            texture ImageTexture{
+                                   url "wallE.jpg"
+                            }
+                     }
+
+                     geometry Box{
+                            size 0.03 2.8 8.25
+                     }
+              }
+       ]
+}
+#WallN
+Transform{
+       translation 0 1.4 -4.14
+       children[
+              Shape{
+                     appearance Appearance{
+                            texture ImageTexture{
+                                   url "wallN.png"
+                            }
+                     }
+                     geometry Box{
+                            size 5.33 2.8 0.03
+                     }
+              }
+       ]
+}
+#Door
+Transform{
+       translation 2.68 1.05 -4.14
+       rotation 0 1 0 0.7854
+       children[  
+              Transform{
+                     translation -0.45 0 0
+                     children[
+                            Shape{
+                                   appearance DEF dryWall Appearance{
+                                          material Material{
+                                                 diffuseColor 0.7813 0.7734 0.6914
+                                          }
+                                   }
+                                   geometry Box{
+                                          size 0.9 2.1 0.03
+                                   }
+                            }
+                     ]
+              }
+              #DoorKnob
+              Transform{
+                     translation -0.8 0 0
+                     children[
+                            Transform{
+                                   rotation 1 0 0 1.5708
+                                   children[
+                                          Shape{
+                                                 appearance DEF Chrome Appearance{
+                                                        material Material{
+                                                               diffuseColor 0.7 0.7 0.7
+                                                               specularColor 0.8 0.8 0.8
+                                                               emissiveColor 0.3 0.3 0.3
+                                                               ambientIntensity 0
+                                                               shininess 0.5
+                                                        }
+                                                 }
+                                                 geometry Cylinder{
+                                                        radius 0.03
+                                                        height 0.15
+                                                 }
+                                          }
+                                   ]
+                            }
+                     ]
+              }
+       ]
+}
+#WallS_1
+DEF WallS_1 Transform{
+       translation 2.68 1.4 4.125
+       rotation 0 1 0 -2.3562
+       children[
+              Transform{
+                     translation 0.44 0 0
+                     children[
+                            Shape{
+                                   appearance DEF Glass Appearance{
+                                          material Material{
+                                                 diffuseColor 1 1 1
+                                                 transparency 0.6
+                                          }
+                                   }
+                                   geometry Box{
+                                          size 0.88 2.8 0.006
+                                   }
+                            }
+                     ]
+              }
+       ]
+}
+DEF WallS_1_ Transform{
+       translation 2.72 1.4 4.085
+       rotation 0 1 0 -2.3562
+       children[
+              Transform{
+                     translation 0.44 0 0
+                     children[
+                            Shape{
+                                   appearance Appearance{
+                                          texture ImageTexture{
+                                                 url "win.png"
+                                          }
+                                   }
+                                   geometry Box{
+                                          size 0.88 2.8 0.006
+                                   }
+                            }
+                     ]
+              }
+       ]
+}
+#WallS_2
+DEF WallS_2 Transform{
+       translation 2.0577 1.4 4.7473
+       children[
+              Transform{
+                     translation -0.675 0 0.05
+                     children[
+                            Shape{
+                                   appearance USE Brick
+                                   geometry Box{
+                                          size 1.35 2.8 0.1
+                                   }
+                            }
+                     ]
+              }
+       ]
+}
+#AC1
+DEF AC Transform{
+       translation 1.3827 2.2 5
+       children[
+              Shape{
+                     appearance Appearance{
+                            texture ImageTexture{
+                                   url "ac.jpg"
+                            }
+                     }
+                     geometry Box{
+                            size 0.6 0.4 0.6
+                     }
+              }
+       ]
+}
+#WallS_3
+DEF WallS_3 Transform{
+       translation 0.7077 1.4 4.7473
+       children[
+              Transform{
+                     translation -0.05 0 -0.2611
+                     children[
+                            Shape{
+                                   appearance USE Brick
+                                   geometry Box{
+                                          size 0.1 2.8 0.7223
+                                   }
+                            }
+                     ]
+              }
+       ]
+}
+#WallS_4
+DEF WallS_4 Transform{
+       translation 0.6077 1.4 4.125
+       children[
+              Transform{
+                     translation -0.35 0 0.05
+                     children[
+                            Shape{
+                                   appearance USE Brick
+                                   geometry Box{
+                                          size 0.7 2.8 0.1
+                                   }
+                            }
+                     ]
+              }
+       ]
+}
+#WallS_5-8_&_AC2
+Transform{
+       translation -2.7723 0 0
+       children[
+              USE WallS_1
+              USE WallS_1_
+              USE WallS_2
+              USE WallS_3
+              USE WallS_4
+              USE AC
+       ]
+}
+
+    
+
+#StationsE{
+DEF StationsE Transform{
+       children[
+              #TablePC 1
+              DEF TablePC Transform{
+                     translation 2.35 0.82 -2.1
+                     rotation 0 1 0 -1.5708
+                     children[
+                            DEF TablePCMain Transform{
+                                   children[
+                                          Shape{
+                                                 appearance DEF White Appearance{
+                                                        material Material{
+                                                               diffuseColor 1 1 1
+                                                        }
+                                                 }
+                                                 geometry Box{
+                                                        size 0.8 0.03 0.6
+                                                 }
+                                          }
+                                          #TablePCSupport L
+                                          DEF TablePCSupport Transform{
+                                                 translation -0.37 -0.0125 0
+                                                 children[
+                                                        Shape{
+                                                               appearance DEF LightGrayMetal Appearance{
+                                                                      material Material{
+                                                                             diffuseColor 0.6 0.6 0.6
+                                                                             specularColor 0.8 0.8 0.8
+                                                                      }
+                                                               }
+                                                               geometry Box{
+                                                                      size 0.05 0.025 0.54
+                                                               }
+                                                        }
+                                                        DEF TablePCSupportTip Transform{
+                                                               translation 0 0 0.27
+                                                               children[       
+                                                                      Shape{
+                                                                             appearance USE LightGrayMetal
+                                                                             geometry Cylinder{
+                                                                                    radius 0.025
+                                                                                    height 0.025
+                                                                             }
+                                                                      }
+                                                               ]
+                                                        }
+                                                        Transform{
+                                                               translation 0 0 -0.54
+                                                               children USE TablePCSupportTip
+                                                        }
+                                                        #Column
+                                                        Transform{
+                                                               translation 0 -0.4 -0.15
+                                                               children[
+                                                                      Shape{
+                                                                             appearance USE LightGrayMetal
+                                                                             geometry Box{
+                                                                                    size 0.05 0.8 0.2
+                                                                             }
+                                                                      }
+                                                                      DEF TablePCSupportColumn Transform{
+                                                                             translation 0 0 0.1
+                                                                             children[
+                                                                                    Shape{
+                                                                                           appearance USE LightGrayMetal
+                                                                                           geometry Cylinder{
+                                                                                                  radius 0.025
+                                                                                                  height 0.8
+                                                                                           }
+                                                                                    }
+                                                                             ]
+                                                                      }
+                                                                      Transform{
+                                                                             translation 0 0 -0.2
+                                                                             children USE TablePCSupportColumn
+                                                                      }
+                                                               ]       
+                                                        }
+                                                        #Feet
+                                                        Transform{
+                                                               translation 0 -0.8 0
+                                                               children[
+                                                                      Shape{
+                                                                             appearance USE LightGrayMetal
+                                                                             geometry Box{
+                                                                                    size 0.05 0.025 0.54
+                                                                             }
+                                                                      }
+                                                                      DEF TablePCSupportTip Transform{
+                                                                             translation 0 0 0.27
+                                                                             children[       
+                                                                                    Shape{
+                                                                                           appearance USE LightGrayMetal
+                                                                                           geometry Cylinder{
+                                                                                                  radius 0.025
+                                                                                                  height 0.025
+                                                                                           }
+                                                                                    }
+                                                                             ]
+                                                                      }
+                                                                      Transform{
+                                                                             translation 0 0 -0.54
+                                                                             children USE TablePCSupportTip
+                                                                      }
+                                                               ]
+                                                        }              
+                                                 ]
+                                          }
+                                          #TablePCSupport R
+                                          DEF TablePCSupportR Transform{
+                                                 translation 0.74 0 0
+                                                 children USE TablePCSupport
+                                          }
+                                          #TablePCBack
+                                          Transform{
+                                                 translation 0 -0.31 -0.2
+                                                 children[
+                                                        Shape{
+                                                               appearance USE White
+                                                               geometry Box{
+                                                                      size 0.7 0.6 0.03
+                                                               }
+                                                        }
+                                                 ]
+                                          }
+                                          #TablePCKeyboard
+                                          Transform{
+                                                 translation 0 0.0155 0.2
+                                                 children[
+                                                        Shape{
+                                                               appearance Appearance{
+                                                                      texture ImageTexture {
+                                                                             url "Keyboard.jpg"                                                             
+                                                                      }
+                                                               }
+                                                               geometry Box{
+                                                                      size 0.4 0.01 0.15
+                                                               }
+                                                        }
+                                                 ]              
+                                          }
+                                          #TablePCMonitorBase
+                                          Transform{
+                                                 translation 0 0.0155 -0.2
+                                                 children[
+                                                        Shape{      
+                                                               appearance DEF Black Appearance{
+                                                                      material Material{
+                                                                             diffuseColor 0.1 0.1 0.1
+                                                                      }
+                                                               }
+                                                               geometry Box{
+                                                                      size 0.25 0.01 0.2
+                                                               }
+                                                        }
+                                                 ]
+                                          }
+                                          #TablePCMonitorColumn
+                                          Transform{
+                                                 translation 0 0.166 -0.2
+                                                 children[
+                                                        Shape{
+                                                               appearance USE Black
+                                                               geometry Box{
+                                                                      size 0.1 0.3 0.01
+                                                               }       
+                                                        }
+                                                 ]
+                                          }
+                                          #TablePCScreen
+                                          Transform{
+                                                 translation 0 0.301 -0.19
+                                                 children[
+                                                        Shape{
+                                                               appearance Appearance{
+                                                                      material Material{
+                                                                             diffuseColor 0 0 0
+                                                                      }
+                                                               }
+                                                               geometry Box{
+                                                                      size 0.48 0.27 0.01
+                                                               }
+                                                        }
+                                                 ]
+                                          }              
+                                   ]
+                            }
+                     ]
+              }
+              #Chair 1
+              DEF Chair Transform{
+                     translation 2 0.1 -2.1
+                     rotation 0 1 0 1.5708
+                     children[
+                            Inline{
+                                   url "k-cadeira2.wrl"
+                            }
+                     ]
+              }
+              #Station 2
+              DEF Station2 Transform{
+                     translation 0 0 0.85
+                     children[       
+                            USE TablePC
+                            USE Chair
+                     ]
+              }
+              #Station 3-4
+              DEF Station3_4 Transform{
+                     translation 0 0 1.7
+                     children[
+                            USE TablePC
+                            USE Chair
+                            USE Station2
+                     ]
+              }
+              #Station 4-7
+              Transform{
+                     translation 0 0 2.55
+                     children[
+                            USE Station2
+                            USE Station3_4
+                     ]
+              }
+       ]
+}
+#StationsW
+Transform{
+       translation 0 0 0.85
+       rotation 0 1 0 3.1416
+       children USE StationsE
+}
+#StationsS
+DEF StationS Transform{
+       translation -0.6 0 2
+       rotation 0 1 0 -1.5708
+       children[
+              USE TablePC
+              USE Chair
+       ]
+}
+#StationProfessor
+Transform{
+       translation -6 0 -5.3
+       rotation 0 1 0 -1.5708
+       scale 1 1 2
+       children[
+              USE TablePC
+              USE Chair
+       ]
+}
+
+Transform{
+       translation -2.7723 0 0
+       children USE StationS
+}
+
+#RoundStationsL
+DEF RoundStationsL Transform{
+       children[
+              #RoundStation1
+              DEF RoundStation Transform{
+                     translation -0.6 0 -2
+                     children[       
+                            DEF TableRound Transform{
+                            translation 0 0.42 0
+                                   children[
+                                          Shape{
+                                                 appearance USE LightGrayMetal
+                                                 geometry Cylinder{
+                                                        radius 0.05
+                                                        height 0.8
+                                                 }
+                                          }
+                                          DEF TableFeet Transform{
+                                                 translation 0.2 -0.4 0
+                                                 children[
+                                                        Shape{
+                                                               appearance USE LightGrayMetal
+                                                               geometry Box{
+                                                                      size 0.4 0.025 0.05
+                                                               }
+                                                        }
+                                                        Transform{
+                                                               translation 0.2 0 0
+                                                               children[
+                                                                      Shape{
+                                                                             appearance USE LightGrayMetal
+                                                                             geometry Cylinder{
+                                                                                    height 0.025
+                                                                                    radius 0.025
+                                                                             }
+                                                                      }
+                                                               ]
+                                                        }      
+                                                 ]
+                                          }
+                                          DEF TableFeet2 Transform{
+                                                 rotation 0 1 0 1.5708
+                                                 children[
+                                                        USE TableFeet
+                                                 ]
+                                          }       
+                                          Transform{
+                                                 rotation 0 1 0 3.1416
+                                                 children[
+                                                        USE TableFeet
+                                                        USE TableFeet2
+                                                 ]
+                                          }
+                                          Transform{
+                                                 translation 0 0.4 0
+                                                 children[
+                                                        Shape{
+                                                               appearance USE White
+                                                               geometry Cylinder{
+                                                                      radius 0.6
+                                                                      height 0.02
+                                                               }
+                                                        }
+                                                 ]
+                                          }                                   
+                                   ]       
+                            }
+                            #RoundStationChair1
+                            DEF RoundStationChair Transform{
+                                   translation 0 0.1 -0.6
+                                   children [
+                                          Inline{
+                                                 url "k-cadeira2.wrl"
+                                          }
+                                   ]
+                            }
+                            #RoundStationChair2
+                            Transform{
+                                   rotation 0 1 0 2.0944
+                                   children USE RoundStationChair
+                            }
+                            #RoundStationChair3
+                            Transform{
+                                   rotation 0 1 0 -2.0944
+                                   children USE RoundStationChair
+                            }
+                     ]
+              }
+              Transform{
+                     translation 0 0 2
+                     children USE RoundStation
+              }
+              Transform{
+                     translation 0 0 4
+                     children USE RoundStation
+              }
+       ]       
+}
+#RoundStationsR
+Transform{
+       translation 1.2 0 1
+       children USE RoundStationsL
+}
+Transform{
+       translation 0 5 15
+       children[
+              Shape{
+                     appearance Appearance{
+                            texture ImageTexture{
+                                   url "hell.jpg"
+                            }
+                     }
+                     geometry Box{
+                            size 24 16 0.3
+                     }
+              }
+       ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
