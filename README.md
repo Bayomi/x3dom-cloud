@@ -7,7 +7,7 @@ A professor from the Civil Engineering departments holds a lecture on Virtual an
 
 ### Links
 
-[github code](https://github.com/Bayomi/x3dom-cloud/)
+[Github code](https://github.com/Bayomi/x3dom-cloud/)
 
 ### Contact
 
